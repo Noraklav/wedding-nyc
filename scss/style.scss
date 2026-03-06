@@ -101,10 +101,14 @@ p, span { color: $primario; }
   .countdowm {
     @include flexCenter(row);
     width: 100%;
+    padding: 60px 0;
+    background: $primario;
+    margin-top: -40px;
 
     .cont_line {
       height: 180px;
       padding: 0 16px;
+      filter: invert(1) brightness(1);
     }
 
     .main_box {
@@ -135,74 +139,8 @@ p, span { color: $primario; }
           top: -15px;
         }
       }
-    }
-  }
 
-  // Itinerario
-  .itinerario {
-    @include flexCenter(column);
-    width: 100%;
-    gap: 36px;
-
-    .main__box {
-      @include flexCenter(column);
-      gap: 54px;
-      
-      .box {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        width: 500px;
-
-        &.der {
-          @include flexCenter(row);
-          justify-content: space-between;
-          
-          .cc_img { justify-content: flex-end; }
-          .texto { text-align: left; }
-        }
-        
-        &.izq {
-          @include flexCenter(row-reverse);
-          .cc_img { justify-content: flex-start; }
-          justify-content: space-between;
-          .texto { text-align: right; }
-        }
-        
-        .cc_img {
-          display: flex;
-          width: 170px;
-          img { width: auto; }
-          .cruz { height: 95px; }
-          .anillos { height: 105px; }
-          .copa { height: 105px; }
-          .musica { height: 103px; }
-          .auto { height: 70px; }
-        }
-
-        .square {
-          width: 16px;
-          height: 16px;
-          transform: rotate(45deg);
-          background: $primario;
-        }
-
-        .texto {
-          width: 170px;
-          @include cardo(36px);
-          line-height: 42px;
-          font-style: italic;
-        }
-      }
-
-      .line {
-        position: absolute;
-        .linea_media {
-          width: 2px;
-          height: 620px;
-          background: $primario;
-        }
-      }
+      p, span { color: #FFF !important; }
     }
   }
 
@@ -256,17 +194,17 @@ p, span { color: $primario; }
 
     .link {
       all: unset;
-      @include cardo(20px);
+      @include cardo(24px);
       background: $primario;
       color: #FFF;
       padding: 8px 16px;
-      text-decoration: underline;
       cursor: pointer;
     }
     
     .bus {
-      @include cardo(24px);
-      br { display: none; }
+      @include cardo(32px);
+      br { display: none; } 
+      margin-top: 24px;
     }
 
     iframe {
@@ -310,7 +248,7 @@ p, span { color: $primario; }
 
   .division {
     width: 100%;
-    max-width: 450px;
+    max-width: 300px;
   }
 }
 
@@ -331,7 +269,7 @@ footer {
 
 @media (max-width: 860px) {
   #main {
-    gap: 24px;
+    gap: 40px;
     overflow: hidden;
     
     .banner {
@@ -363,6 +301,8 @@ footer {
     .countdowm {
       flex-direction: column;
       gap: 40px;
+      margin-top: -40px;
+      padding: 40px 0;
 
       .main_box {
         .titular { font-size: 30px; }
@@ -386,16 +326,9 @@ footer {
       .cont_line { display: none;}
     }
 
-    .itinerario {
-      .main__box {
-        scale: .7;
-        margin: -110px 0;
-      }
-    }
-
     .dress {
       gap: 16px;
-      .tipo { font-size: 32px; }
+      .tipo { font-size: 24px; }
     }
 
     .gift {
@@ -427,6 +360,10 @@ footer {
         width: 360px;
         height: 180px;
       }
+
+      .link {
+        font-size: 18px;
+      }
     }
 
     .save_the_date {
@@ -436,12 +373,29 @@ footer {
       }
     }
 
-    .division { max-width: 250px; }
+    .division { max-width: 150px; }
+  }
+
+  footer {
+    height: 40px;
+
+    span {
+      font-size: 20px;
+    }
   }
 }
 
-#main {
-  .division, .banner, .date, .countdowm, .itinerario, .gift, .address, .save_the_date {
-  // display: none;
-  }
+div:where(.swal2-container) h2:where(.swal2-title) {
+  @include aboreto(40px);
+}
+
+div:where(.swal2-container) div:where(.swal2-html-container) {
+  @include cardo(0);
+  font-size: 20px !important;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
+  background-color: $primario !important;
+  @include aboreto(0);
+  font-size: 20px !important;
 }
