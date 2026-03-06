@@ -1,0 +1,447 @@
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap');
+
+$primario: #22223A;
+
+* { margin: 0; box-sizing: border-box; }
+p, span { color: $primario; }
+
+@mixin flexCenter($dir) {
+  display: flex;
+  flex-direction: $dir;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin aboreto($size) {
+  font-family: Aboreto;
+  font-weight: 400;
+  font-size: $size;
+  line-height: 100%;
+}
+@mixin cardo($size) {
+  font-family: Cardo;
+  font-weight: 400;
+  font-size: $size;
+  line-height: 100%;
+  text-align: center;
+}
+
+.section_title { @include aboreto(48px); }
+@media (max-width: 860px) {
+  .section_title { font-size: 32px; }
+  .cta_btn {
+    font-size: 20px !important;
+    padding: 12px 16px !important;
+    margin-top: 12px !important;
+  }
+}
+
+#main {
+  @include flexCenter(column);
+  gap: 40px;
+
+  // Banner
+  .banner {
+    @include flexCenter(column);
+    width: 100%;
+    height: 100vh;
+    background-color: #121225;
+    background-image: url(/assets/bg.webp);
+    background-size: cover;
+    gap: 24px;
+
+    .subtitulo {
+      @include cardo(40px);
+      font-style: Italic;
+      color: #FFF;
+    }
+
+    .nombres {
+      height: 75%;
+      max-height: 570px;
+    }
+  }
+
+  // Fecha
+  .date {
+    @include flexCenter(column);
+    width: 100%;
+    height: auto;
+    gap: 8px;
+
+    .mes, .year {
+      @include cardo(30px);
+      text-transform: uppercase;
+    }
+    
+    .ct_fecha {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+
+      .box {
+        width: 180px;
+        @include flexCenter(row);
+        @include cardo(30px);
+        text-transform: uppercase;
+        border-top: 2px solid $primario;
+        border-bottom: 2px solid $primario;
+        padding: 8px;
+      }
+
+      .fecha {
+        @include cardo(105px);
+      }
+    }
+  }
+
+  // Contador
+  .countdowm {
+    @include flexCenter(row);
+    width: 100%;
+
+    .cont_line {
+      height: 180px;
+      padding: 0 16px;
+    }
+
+    .main_box {
+      @include flexCenter(column);
+      width: 470px;
+      gap: 8px;
+
+      .titular { @include aboreto(40px); }
+
+      .ct_contador {
+        @include flexCenter(row);
+        gap: 8px;
+
+        .box {
+          @include flexCenter(column);
+
+          .num {
+            @include cardo(72px);
+          }
+          .bajada {
+            @include cardo(21px);
+          }
+        }
+        
+        .dos_puntos {
+          @include cardo(72px);
+          position: relative;
+          top: -15px;
+        }
+      }
+    }
+  }
+
+  // Itinerario
+  .itinerario {
+    @include flexCenter(column);
+    width: 100%;
+    gap: 36px;
+
+    .main__box {
+      @include flexCenter(column);
+      gap: 54px;
+      
+      .box {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 500px;
+
+        &.der {
+          @include flexCenter(row);
+          justify-content: space-between;
+          
+          .cc_img { justify-content: flex-end; }
+          .texto { text-align: left; }
+        }
+        
+        &.izq {
+          @include flexCenter(row-reverse);
+          .cc_img { justify-content: flex-start; }
+          justify-content: space-between;
+          .texto { text-align: right; }
+        }
+        
+        .cc_img {
+          display: flex;
+          width: 170px;
+          img { width: auto; }
+          .cruz { height: 95px; }
+          .anillos { height: 105px; }
+          .copa { height: 105px; }
+          .musica { height: 103px; }
+          .auto { height: 70px; }
+        }
+
+        .square {
+          width: 16px;
+          height: 16px;
+          transform: rotate(45deg);
+          background: $primario;
+        }
+
+        .texto {
+          width: 170px;
+          @include cardo(36px);
+          line-height: 42px;
+          font-style: italic;
+        }
+      }
+
+      .line {
+        position: absolute;
+        .linea_media {
+          width: 2px;
+          height: 620px;
+          background: $primario;
+        }
+      }
+    }
+  }
+
+  // Vestimenta
+  .dress {
+    @include flexCenter(column);
+    gap: 24px;
+
+    .tipo {
+      @include cardo(48px);
+      font-style: italic;
+    }
+  }
+
+  // Regalos
+  .gift {
+    @include flexCenter(column);
+    gap: 12px;
+    
+    .txt {
+      @include cardo(30px);
+    }
+    
+    .cta_btn {
+      all: unset;
+      @include cardo(30px);
+      background: $primario;
+      color: #FFF;
+      padding: 12px 15px;
+      margin-top: calc(36px - 12px);
+      cursor: pointer;
+    }
+  }
+
+  // Direccion
+  .address {
+    @include flexCenter(column);
+    gap: 12px;
+
+    .direccion {
+      @include flexCenter(column);
+      @include cardo(24px);
+      margin-top: 12px;
+      gap: 8px;
+      .dt {
+        @include cardo(36px);
+        font-weight: 600;
+      }
+      .mb { display: none; }
+    } 
+
+    .link {
+      all: unset;
+      @include cardo(20px);
+      background: $primario;
+      color: #FFF;
+      padding: 8px 16px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    
+    .bus {
+      @include cardo(24px);
+      br { display: none; }
+    }
+
+    iframe {
+      all: unset;
+      width: 900px;
+      height: 450px;
+      border: 1px solid $primario;
+      border-radius: 8px;
+    }
+    
+    .cta_btn {
+      all: unset;
+      @include cardo(30px);
+      background: $primario;
+      color: #FFF;
+      padding: 12px 15px;
+      margin-top: calc(36px - 12px);
+      cursor: pointer;
+    }
+  }
+
+  // Calendario
+  .save_the_date {
+    @include flexCenter(column);
+    gap: 12px;
+    
+    .txt {
+      @include cardo(30px);
+    }
+    
+    .cta_btn {
+      all: unset;
+      @include cardo(30px);
+      background: $primario;
+      color: #FFF;
+      padding: 12px 15px;
+      margin-top: calc(36px - 12px);
+      cursor: pointer;
+    }
+  }
+
+  .division {
+    width: 100%;
+    max-width: 450px;
+  }
+}
+
+footer {
+  @include flexCenter(column);
+  width: 100%;
+  height: 60px;
+  background-color: $primario;
+  margin-top: 40px;
+
+  span {
+    @include cardo(30px);
+    font-style: italic;
+    color: #FFF;
+  }
+}
+
+
+@media (max-width: 860px) {
+  #main {
+    gap: 24px;
+    overflow: hidden;
+    
+    .banner {
+      .subtitulo {
+        font-size: 32px;
+      }
+
+      .nombres {
+        width: 90%;
+        max-width: 500px;
+        object-fit: contain;
+      }
+    }
+
+    .date {
+      gap: 4px;
+      .mes, .year { font-size: 20px; }
+      .ct_fecha {
+        gap: 16px;
+        .box {
+          font-size: 20px;
+          width: 110px;
+        }
+        .fecha { font-size: 70px; }
+      }
+      
+    }
+
+    .countdowm {
+      flex-direction: column;
+      gap: 40px;
+
+      .main_box {
+        .titular { font-size: 30px; }
+
+        .ct_contador {
+          .box {
+            .num { font-size: 40px; }
+            .bajada {
+              font-size: 16px;
+              font-weight: 700;
+            }
+          }
+          .dos_puntos {
+            font-size: 32px;
+            top: -10px;
+          }
+        }
+
+      }
+
+      .cont_line { display: none;}
+    }
+
+    .itinerario {
+      .main__box {
+        scale: .7;
+        margin: -110px 0;
+      }
+    }
+
+    .dress {
+      gap: 16px;
+      .tipo { font-size: 32px; }
+    }
+
+    .gift {
+      .txt {
+        font-size: 24px;
+      }
+    }
+
+    .address {
+      .direccion {
+        .dt { display: none; }
+        .mb {
+          display: block;
+          @include cardo(24px);
+          font-weight: 700;
+          font-size: 24px;
+        }
+
+        font-size: 20px;
+      }
+
+      .bus {
+        font-size: 22px;
+        br { display: block; }
+        margin-top: 8px;
+      }
+
+      iframe {
+        width: 360px;
+        height: 180px;
+      }
+    }
+
+    .save_the_date {
+      .txt {
+        font-size: 24px;
+        width: 300px;
+      }
+    }
+
+    .division { max-width: 250px; }
+  }
+}
+
+#main {
+  .division, .banner, .date, .countdowm, .itinerario, .gift, .address, .save_the_date {
+  // display: none;
+  }
+}
